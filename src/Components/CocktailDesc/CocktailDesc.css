@@ -1,0 +1,40 @@
+.cocktail-desc-container{
+    background: #0f0824;
+    margin-top: 60px;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.cocktail-desc-container .desc{
+    padding: 30px;
+    border-radius: 15px;
+    border:1px solid #fff;
+}
+.cocktail-desc-container img{
+    border-radius: 15px;
+}
+.cocktail-desc-container .desc ul{
+    color: #fff;
+    margin: 15px 0;
+    padding: 0;
+    list-style: none;
+}
+.cocktail-desc-container .desc ul li{
+    position: relative;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+.cocktail-desc-container .desc ul li:before {
+    content: "";
+    background-color: #fff;
+    position: relative;
+    width: 10px;
+    height: 10px;
+    left: 0;
+    margin-right: 5px;
+    top: -1px;
+    border-radius: 2px;
+    display: flex;
+}

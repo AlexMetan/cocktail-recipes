@@ -1,0 +1,29 @@
+*:focus{
+  outline: none;
+}
+
+a{
+  text-decoration: none;
+  color: #fff;
+}
+a:hover{
+  color: #fff;
+}
+h1,h2,h3,h4,h5,h6,p{
+  color: #fff;
+}
+body{
+  background-color: #070215;
+  font-family: 'Montserrat', sans-serif;
+}
+section{
+  padding: 60px 0;
+}
+h2{
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+img{
+  display: block;
+  max-width: 100%;
+}
