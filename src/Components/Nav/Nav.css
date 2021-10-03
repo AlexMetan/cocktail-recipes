@@ -1,6 +1,9 @@
 nav{
     background-color: #070215;
     padding: 20px 10%;
+    position: fixed;
+    width: 100%;
+    z-index: 10000;
 }
 
 nav ul{

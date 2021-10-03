@@ -2,14 +2,18 @@ import React, { Component } from 'react'
 
 import axios from 'axios'
 import Loader from '../Loader/Loader'
+import Banner from '../Banner/Banner'
+import bannerImg from './../../img/banner.jpg'
 
 import './CocktailDesc.css'
+import { Redirect } from 'react-router'
 
 export default class CocktailDesc extends Component {
 
     state={
         cocktail:null,
-        loading:true
+        loading:true,
+        redirect:false
     }
     _isMounted = false
     getCocktailById= async() => {
@@ -29,18 +33,20 @@ export default class CocktailDesc extends Component {
             if(this._isMounted){
                 this.setState({
                     cocktail,
-                    loading:false
+                    loading:false,
                 })
             }
             
         }catch(e){
-            console.log(e);
+            this.setState({
+                redirect:true
+            })
         }
     }
     getIngredients(cocktail){
         const ingredients = []
         for(let i=1;i<16;i++){
-            if(cocktail[`strIngredient${i}`]!=null){
+            if(cocktail[`strIngredient${i}`]!=null&&cocktail[`strIngredient${i}`]!=""){
                 ingredients.push(cocktail[`strIngredient${i}`])
             }
         }
@@ -65,40 +71,50 @@ export default class CocktailDesc extends Component {
     }
     render() {
         return (
-            <section>
-                <div className="container cocktail-desc-container">
-                {
-                    this.state.loading
-                    ?<Loader/>
-                    :
-                    <div className="row">
-                        <div className="col-lg-4">
-                            <img src={this.state.cocktail.thumb} />
-                        </div>
-                        <div className="col-lg-8">
-                            <h2>{this.state.cocktail.name}</h2>
-                            <div className="desc">
-                                <p>Category: <b>{this.state.cocktail.category}</b></p>
-                                <p>Alcohol: <b>{this.state.cocktail.alcoholic}</b></p>
-                                <h4>
-                                    Ingredients:
-                                </h4>
-                                <ul>
-                                    {this.getCurrentCocktailIngredients()}
-                                </ul>
-                                <h4>
-                                    Instruction
-                                </h4>
-                                <p>
-                                    {this.state.cocktail.instruction}
-                                </p>
+            <React.Fragment>
+
+            {
+                !this.state.redirect
+                ?<main>
+                    <Banner imgSrc={bannerImg}/>
+
+                    <section>
+                        <div className="container cocktail-desc-container">
+                        {
+                            this.state.loading
+                            ?<Loader/>
+                            :
+                            <div className="row">
+                                <div className="col-lg-4">
+                                    <img src={this.state.cocktail.thumb} />
+                                </div>
+                                <div className="col-lg-8">
+                                    <h2>{this.state.cocktail.name}</h2>
+                                    <div className="desc">
+                                        <p>Category: <b>{this.state.cocktail.category}</b></p>
+                                        <p>Alcohol: <b>{this.state.cocktail.alcoholic}</b></p>
+                                        <h4>
+                                            Ingredients:
+                                        </h4>
+                                        <ul>
+                                            {this.getCurrentCocktailIngredients()}
+                                        </ul>
+                                        <h4>
+                                            Instruction
+                                        </h4>
+                                        <p>
+                                            {this.state.cocktail.instruction}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
+                            }
                         </div>
-                    </div>
-                }
-            </div>
-            </section>
-           
+                    </section>
+                </main>
+            :<Redirect to="/404" />
+            }
+           </React.Fragment>
         )
     }
 }

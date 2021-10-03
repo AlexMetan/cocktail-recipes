@@ -1,9 +1,11 @@
 .cocktail-box{
     background-color: #0f0824;
-    border-radius:15px;
+    border-radius: 15px;
     position: relative;
     z-index: 0;
-    
+    height: calc(100% - 30px);
+    margin-bottom: 30px;
+    padding-bottom: 15px;
 }
 .cocktail-box a{
     position: absolute;
@@ -43,9 +45,57 @@
     font-weight: 400;
     text-align: center;
     margin-bottom: 15px;
+    color: #dbdbdb;
+    font-style: italic;
 }
 .cocktail-box .cocktail-desc img{
     height: 70px;
     display: block;
     margin: auto;
+}
+.cocktail-box .cocktail-flex-box{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.cocktail-box .cocktail-flex-box ul{
+    color: #fff;
+    margin: 15px 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+}
+.cocktail-box .cocktail-flex-box ul li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+.cocktail-box .cocktail-flex-box ul li:before {
+    content: "";
+    background-color: #8187ef;
+    position: relative;
+    min-width: 10px;
+    height: 10px;
+    left: 0;
+    margin-right: 5px;
+    top: -1px;
+    border-radius: 2px;
+    display: flex;
+}
+.cocktail-box .cocktail-flex-box .alco-icon{
+    margin-left: 15px;
+}
+@media screen and (max-width:767px){
+    .cocktail-flex-box{
+        flex-direction: column;
+    }
+    .cocktail-box .cocktail-flex-box ul li{
+        justify-content: center;
+        text-align: center;
+    }
+    .cocktail-box .cocktail-flex-box{
+        align-items: center;
+    }
 }

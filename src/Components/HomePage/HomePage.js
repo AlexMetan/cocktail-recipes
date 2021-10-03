@@ -20,7 +20,8 @@ export default class HomePage extends Component {
                 id:cocktailRes.idDrink,
                 name:cocktailRes.strDrink,
                 alcoholic:cocktailRes.strAlcoholic,
-                thumb:cocktailRes.strDrinkThumb
+                thumb:cocktailRes.strDrinkThumb,
+                ingredients:this.getIngredients(cocktailRes)
             }
             if(this._isMounted){
                 this.setState({
@@ -32,6 +33,15 @@ export default class HomePage extends Component {
         }catch(e){
             console.log(e);
         }
+    } 
+    getIngredients(cocktail){
+        const ingredients = []
+        for(let i=1;i<16;i++){
+            if(cocktail[`strIngredient${i}`]!=null&&cocktail[`strIngredient${i}`]!=""){
+                ingredients.push(cocktail[`strIngredient${i}`])
+            }
+        }
+        return ingredients
     }
     componentDidMount(){
         this._isMounted = true
@@ -45,7 +55,7 @@ export default class HomePage extends Component {
         return (
             <Cocktail
                 cocktailObj={this.state.cocktail}
-                columnClass ="col-lg-3 col-md-4 col-8"
+                columnClass ="col-xl-3 col-lg-4 col-md-6 col-10"
             />
         )
     }
@@ -74,7 +84,7 @@ export default class HomePage extends Component {
                         <div className="col-12 text-center">
                             <Button
                                 action={this.buttonHandler}
-                                title="Get new random cocktail"
+                                title="Get random cocktail"
                             />
                         </div>
                     </div>

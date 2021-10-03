@@ -8,7 +8,7 @@
 .cocktail-desc-container .desc{
     padding: 30px;
     border-radius: 15px;
-    border:1px solid #fff;
+    border:1px solid #8187ef;
 }
 .cocktail-desc-container img{
     border-radius: 15px;
@@ -28,7 +28,7 @@
 }
 .cocktail-desc-container .desc ul li:before {
     content: "";
-    background-color: #fff;
+    background-color: #8187ef;
     position: relative;
     width: 10px;
     height: 10px;
@@ -37,4 +37,16 @@
     top: -1px;
     border-radius: 2px;
     display: flex;
+}
+@media screen and (max-width:991px) {
+    .cocktail-desc-container h2{
+        margin-top: 60px;
+    }
+    .cocktail-desc-container{
+        text-align: center;
+    }
+    .cocktail-desc-container .desc ul li{
+        text-align: center;
+        justify-content: center;
+    }
 }

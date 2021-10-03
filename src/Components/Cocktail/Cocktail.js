@@ -14,14 +14,25 @@ const Cocktail = props => {
                 </div>
                 <div className="cocktail-desc">
                     <h6>{props.cocktailObj.name}</h6>
-                    <div className="alco-icon">
-                        <img src=
-                        {
-                            props.cocktailObj.alcoholic.toLowerCase()==="alcoholic"
-                            ? alcoholicIcon
-                            : nonAlcoholicIcon
-                        }
-                        />
+                    <div className="cocktail-flex-box">
+                        <ul>
+                            {
+                                props.cocktailObj.ingredients.map((ingr,index)=>{
+                                    return (
+                                        <li key={index}>{ingr}</li>
+                                    )
+                                })
+                            }
+                        </ul>
+                        <div className="alco-icon">
+                            <img src=
+                            {
+                                props.cocktailObj.alcoholic.toLowerCase()==="alcoholic"
+                                ? alcoholicIcon
+                                : nonAlcoholicIcon
+                            }
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
